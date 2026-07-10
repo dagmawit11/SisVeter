@@ -3,11 +3,20 @@
 from pathlib import Path
 from decouple import config
 import dj_database_url
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+cloudinary.config(
+    cloud_name=config("CLOUDINARY_CLOUD_NAME"),
+    api_key=config("CLOUDINARY_API_KEY"),
+    api_secret=config("CLOUDINARY_API_SECRET"),
+    secure=True,
+)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
@@ -40,6 +49,9 @@ INSTALLED_APPS = [
     "contact",
     "footer",
     "settings_app",
+    "cloudinary",
+    "cloudinary_storage",
+    "django.contrib.staticfiles",
 ]
 
 MIDDLEWARE = [
@@ -142,6 +154,15 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STORAGES = {
+    "default": {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 JAZZMIN_SETTINGS = {
 
