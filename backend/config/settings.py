@@ -134,6 +134,8 @@ STATICFILES_DIRS = [
 ]
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "https://odyanimalclinic-frontend.onrender.com",
+
 ]
 
 MEDIA_URL = "/media/"
