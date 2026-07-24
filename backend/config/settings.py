@@ -170,6 +170,8 @@ STORAGES = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "https://odyanimalclinic-frontend.onrender.com",
+    "https://odyanimalclinic.org",
+    "https://www.odyanimalclinic.org",
 ]
 
 # =========================
